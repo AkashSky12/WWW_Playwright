@@ -35,7 +35,31 @@ Ex: except({
 - If you don't wanna use npx then, manually use ../node/@playwright/ test_name
 - By default the test will run headless, to see the browser use the command. 'npx playwright test --headed'
 - To run a single test in the Playwright file use 'only'. Ex: test.only('',()=>{})
+- To run a single file in the directory use npx playwright test tests/fileName
 
 # Continue Playwright
 - To verify the title of the landing page is correct. First get the tile and assert if it correctly displayed
-- 
+- Locators available in playwright is css and xpath
+- CSS is mainly used in playwright
+Syntax:
+    - If Id is present
+        css -> tagName#idValue (or) #idValue
+    - If class attribute is present
+        css -> tagName.classValue (or) .classValue
+    - Define CSS using any Attribute
+        css -> [attribute='value']
+    - Write CSS with traversing from parent to child
+        css -> parentTagName(space)childTagName
+    - To define based on a text
+        css -> text='Value' //use * for partial values refer line 25,26
+- To enter data into app, we have 2 methods 1.type 2.fill
+- To extract text from an element use .textContent()
+- Playwright automatically waits for the next element even if the element is not present and it takes sometime to load. It waits as configured in  playwright.config.js
+- To erase the existing data in a box use the same fill with blank. Ex: .fill("");
+- To fetch the first element from result of multiple elements. We can use 1.nth(0) 2.first()/last()
+- To fetch all the values of the element .allTextContents(), the auto wait will not work when this keyword is used and will return empty array
+- Dynamic waiting in Playwright
+    1. Wait until all the network API calls are completed. Using .waitForLoadState('networkidle')
+    2. Call the same locator in the previous method and add wait. This will wait for only locators with single elements, else it'll fail. So use first()/last()
+    Ex: await page.locator(".card-body b").waitFor();
+
