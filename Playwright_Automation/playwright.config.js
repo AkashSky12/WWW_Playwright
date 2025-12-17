@@ -25,7 +25,7 @@ const config = ({
 
     //Chrome Browser declaration
     browserName: 'chromium',
-    // headless: true,
+    headless: true,
   },
 });
 //Export the variable defined for configurations, so that we can use the same across
