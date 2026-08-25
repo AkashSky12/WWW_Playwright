@@ -62,4 +62,20 @@ Syntax:
     1. Wait until all the network API calls are completed. Using .waitForLoadState('networkidle')
     2. Call the same locator in the previous method and add wait. This will wait for only locators with single elements, else it'll fail. So use first()/last()
     Ex: await page.locator(".card-body b").waitFor();
+- Dropdowns:
+    1. Static or Select dropdowns:
+        const dropdown = await page.locator("select.form-control");
+        await dropdown.selectOption("consult");
+        page.pause(); or page.waitForTimeout(3000);
+    2. 
+- Radio Buttons: select the button by directly calling the locator and click
+- To verify if the button is checked. We can also use .isCheck()-returns boolean value
+    Ex: expect(await page.locator(".customradio").last()).toBeChecked();
+- Web based POP-UP's: take the accept button ID and click on it
+- For checkbox we can use .isChecked() or uncheck() to verify. But ideally assert it
+- Assert checkbox and radio buttons using .toBeFalsy() and .toBeTruly()
+- 
+
+
+
 
